@@ -23,4 +23,6 @@ authRouter.post("/login", authController.loginUser);
  */
 authRouter.get("/get-me", authMiddleware.authUser, authController.getUserData);
 
+authRouter.get("/logout", authController.logoutUser);
+
 module.exports = authRouter;
