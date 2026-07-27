@@ -94,7 +94,22 @@ const loginUser = async (req, res) => {
   });
 };
 
+const getUserData = async (req, res) => {
+  const userId = req.user.id;
+
+  const user = await userModel.findById(userId);
+
+  return res.status(200).json({
+    message: "user fetched successfully",
+    user: {
+      username: user.username,
+      email: user.email,
+    },
+  });
+};
+
 module.exports = {
   registerUser,
   loginUser,
+  getUserData,
 };
