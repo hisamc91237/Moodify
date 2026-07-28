@@ -23,6 +23,10 @@ authRouter.post("/login", authController.loginUser);
  */
 authRouter.get("/get-me", authMiddleware.authUser, authController.getUserData);
 
+/*
+ * @get /api/auth/logout
+ * @description : Logout a user and blacklist the token
+ */
 authRouter.get("/logout", authController.logoutUser);
 
 module.exports = authRouter;
