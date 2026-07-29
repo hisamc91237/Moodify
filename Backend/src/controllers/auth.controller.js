@@ -113,6 +113,9 @@ const logoutUser = async (req, res) => {
 
   res.clearCookie(token);
 
+  /* 
+  - usually tokens are saved in redis because its throughput in more
+  */
   await blacklistModel.create({
     token,
   });
