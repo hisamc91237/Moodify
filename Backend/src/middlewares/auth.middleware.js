@@ -24,7 +24,7 @@ const authUser = async (req, res, next) => {
     next();
   } catch (err) {
     return res.status(401).json({
-      message: "Unauthorized access",
+      message: "Unauthorized Access",
     });
   }
 };
