@@ -2,6 +2,7 @@ const userModel = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const blacklistModel = require("../models/blacklist.model");
+const redis = require("../config/cache");
 
 const registerUser = async (req, res) => {
   const { username, email, password } = req.body;
@@ -113,12 +114,7 @@ const logoutUser = async (req, res) => {
 
   res.clearCookie(token);
 
-  /* 
-  - usually tokens are saved in redis because its throughput in more
-  */
-  await blacklistModel.create({
-    token,
-  });
+  await redis.set(token, Date.now().toString());
 
   res.status(200).json({
     message: "user logout successfully",
