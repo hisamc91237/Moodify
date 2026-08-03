@@ -2,6 +2,8 @@ import { login, register, getMe, logout } from "../services/auth.api";
 import { useContext } from "react";
 import { AuthContext } from "../auth.context";
 
+/* API Layer */
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   const { user, setuser, loading, setLoading } = context;
