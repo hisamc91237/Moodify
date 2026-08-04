@@ -2,7 +2,7 @@ import { login, register, getMe, logout } from "../services/auth.api";
 import { useContext } from "react";
 import { AuthContext } from "../auth.context";
 
-/* API Layer */
+/* Hook Layer */
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
