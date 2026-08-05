@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:/3000/api/auth",
+  baseURL: "http://localhost:3000/api/auth",
   withCredentials: true,
 });
 
-export const register = async (username, emai, password) => {
+export const register = async ({ username, email, password }) => {
   const response = await api.post("/register", {
     username,
     email,
@@ -15,23 +15,24 @@ export const register = async (username, emai, password) => {
   return response.data;
 };
 
-export const login = async (username, password) => {
+export const login = async ({ username, email, password }) => {
   const response = await api.post("/login", {
     username,
+    email,
     password,
   });
 
   return response.data;
 };
 
-export const getMe = () => {
-    const response = await api.get('/get-me')
+export const getMe = async () => {
+  const response = await api.get("/get-me");
 
-    return response.data;
-}
+  return response.data;
+};
 
-export const logout = () => {
-    const response = await api.get('/logout')
+export const logout = async () => {
+  const response = await api.get("/logout");
 
-    return response.data;
-}
+  return response.data;
+};
